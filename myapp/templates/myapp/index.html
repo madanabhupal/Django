@@ -1,1 +1,48 @@
-<h1>This is index page</h1>
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+<title>Index</title>
+{% endblock %}
+
+{% block body %}
+
+<div>
+
+<h1 class="text-2xl px-32 pt-10">Today's deal</h1>
+
+<div class="px-32">
+<hr class="border-t border-gray-600 my-6">
+</div>
+
+<div class="grid grid-cols-4 gap-6 px-32">
+
+{% for p in products %}
+
+<div class="border p-4 rounded shadow">
+
+<img src="{{ p.image.url }}" class="w-full h-40 object-cover">
+
+<h2 class="text-lg font-semibold mt-2">
+  <a href="" 
+     class="text-blue-600 hover:text-blue-800 hover:underline">
+     {{ p.name }}
+  </a>
+</h2>
+
+<p class="text-green-600">
+${{ p.price }}
+</p>
+
+<p class="text-sm">
+{{ p.description }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}
