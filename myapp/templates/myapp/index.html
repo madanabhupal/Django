@@ -8,7 +8,9 @@
 
 <div>
 
-<h1 class="text-2xl px-32 pt-10">Today's deal</h1>
+<h1 class="text-2xl px-32 pt-10 font-semibold">
+Today's Deals
+</h1>
 
 <div class="px-32">
 <hr class="border-t border-gray-600 my-6">
@@ -18,23 +20,24 @@
 
 {% for p in products %}
 
-<div class="border p-4 rounded shadow">
+<div class="border p-4 rounded shadow hover:shadow-lg transition">
 
-<img src="{{ p.image.url }}" class="w-full h-40 object-cover">
+<img src="{{ p.image.url }}" 
+     class="w-full h-40 object-cover rounded hover:scale-105 transition">
 
 <h2 class="text-lg font-semibold mt-2">
-  <a href="" 
-     class="text-blue-600 hover:text-blue-800 hover:underline">
-     {{ p.name }}
-  </a>
+<a href="{{ p.get_absolute_url }}"
+   class="text-blue-600 hover:text-blue-800 hover:underline">
+{{ p.name }}
+</a>
 </h2>
 
-<p class="text-green-600">
+<p class="text-green-600 font-semibold">
 ${{ p.price }}
 </p>
 
-<p class="text-sm">
-{{ p.description }}
+<p class="text-sm text-gray-600">
+{{ p.description|truncatewords:12 }}
 </p>
 
 </div>

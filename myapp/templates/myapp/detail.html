@@ -1,0 +1,47 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+<div class="max-w-7x mx-auto grid grid-cols-3 gap-5">
+  <div class="col-span-1">
+    <img class="w-100 h-100 rounded-lg border shadow-sm" src="{{product.image.url}}" alt="">
+  </div>
+  <div class="col-span-1 space-y-4">
+    <h1 class="text-2xl font-semiblod text-gray-900 pt-5">{{product.name}}</h1>
+    <div class="text-yellow-500 text-lg">
+      ★★★★☆
+      <span class="text-gray-900">
+        (12,231 ratings)
+      </span>
+    </div>
+    <p class="text-green-500 font-bold text-3xl">${{product.price}}</p>
+    <p class="text-gray-900 font-medium ">inclusive all taxes</p>
+    <div>
+      <ul>
+        <li>
+          {{product.description}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-span-1 border rounded-lg p-6 space-y-4" >
+    <div>
+      <p class="col-span-1">${{product.price}}</p>
+      <select name="" id="">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+    </select>
+    </div>
+    <p class="text-green-500 font-semibold">Free delivery by tomorrow</p>
+    {% if product.stock %}
+    <p class="text-green-700 text-5m">In stock</p>
+    {% else %}
+    <p>Out of stock</p>
+    {% endif %}
+  <button class="w-full bg-yellow-400 text-black font-semibold py-2 rounded-lg">Add to cart</button>
+  <button class="w-full bg-gray-700 text-white font-semibold py-2 rounded-lg">Buy now</button>  
+  <p>Sold by ABC</p>  
+  </div>
+
+</div>
+{% endblock %}
