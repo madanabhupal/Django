@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -9,6 +10,9 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     stock = models.PositiveIntegerField()
     active = models.BooleanField(default=True)
+
+    def get_absolute_url(self):
+        return reverse('myapp:detail_view',args=[self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug:
