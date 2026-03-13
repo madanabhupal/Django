@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from myapp.models import Product
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -12,4 +13,5 @@ def detail_view(request,slug):
   product = Product.objects.get(slug=slug)
 
   return render(request,'myapp/detail.html',{'product':product})
+
 
